@@ -9,23 +9,11 @@ end
 
 local errorMessage = nil
 local function TransferItem(slot)
-  --local targetContainer = slot.bagId == BAG_BACKPACK and (BAG_BANK or BAG_SUBSCRIBER_BANK) or BAG_BACKPACK
-  local targetContainer
-  local houseBankBagId = GetBankingBag()
-  if not IsHouseBankBag(houseBankBagId) then houseBankBagId = nil end
-  if(slot.bagId == BAG_BACKPACK) then
-    if houseBankBagId then
-      targetContainer = houseBankBagId
-    else
-      targetContainer = BAG_BANK
-    end
-  else
-    targetContainer = BAG_BACKPACK
-  end
+  local targetContainer = slot.bagId == BAG_BACKPACK and (BAG_BANK or BAG_SUBSCRIBER_BANK) or BAG_BACKPACK
   --Subscriber bank introduced with Morrowind patch
   --Is the user an ESO+ subscriber
   local isEsoPlusSubscriber = IsESOPlusSubscriber() or false
-  if not houseBankBagId and isEsoPlusSubscriber and targetContainer == BAG_BANK then
+  if isEsoPlusSubscriber and targetContainer == BAG_BANK then
     --Check bag space. If it's full change to the subscriber bank, if given
     if not DoesBagHaveSpaceFor(BAG_BANK, slot.bagId, slot.slotIndex) then
       targetContainer = BAG_SUBSCRIBER_BANK
