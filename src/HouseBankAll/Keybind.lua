@@ -4,7 +4,7 @@ local keystripDef = {
     {
         name = "Transfer All",
         keybind = "SC_BANK_ALL",
-        callback = function() DoItAll.BankAll() end,
+        callback = function() DoItAll.HouseBankAll() end,
         alignment = KEYBIND_STRIP_ALIGN_LEFT,
     }
 }

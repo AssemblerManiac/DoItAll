@@ -35,7 +35,7 @@ local function TransferAll(container)
 	if errorMessage then ReportError() end
 end
 
-function DoItAll.BankAll()
+function DoItAll.HouseBankAll()
 	if HOUSE_BANK_FRAGMENT.state == SCENE_SHOWN then
 		TransferAll(ZO_HouseBankBackpack)
 	elseif INVENTORY_FRAGMENT.state == SCENE_SHOWN then  -- there should always be one or the other shown, but check both conditions to be on the safe side
